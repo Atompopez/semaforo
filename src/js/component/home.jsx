@@ -1,26 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
 const Home = () => {
-	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+  const [brilloRed, setBrilloRed] = useState('none');
+  const [brilloYellow, setBrilloYellow] = useState('none');
+  const [brilloGreen, setBrilloGreen] = useState('none');
+
+  function cambiarBrilloRojo() {
+    setBrilloRed('0 0 30px 20px white');
+    setBrilloYellow('none');
+    setBrilloGreen('none');
+  }
+
+  function cambiarBrilloAmarillo() {
+    setBrilloRed('none');
+    setBrilloYellow('0 0 30px 20px white');
+    setBrilloGreen('none');
+  }
+
+  function cambiarBrilloVerde() {
+    setBrilloRed('none');
+    setBrilloYellow('none');
+    setBrilloGreen('0 0 30px 20px white');
+  }
+
+  return (
+	<div className="semaforo">
+		<div className="soporteSemaforo"></div>
+		<div className="cuerpoSemaforo">
+			<div className="luz" onClick={cambiarBrilloRojo} style={{ backgroundColor:'red' , boxShadow: brilloRed}}></div>
+			<div className="luz" onClick={cambiarBrilloAmarillo} style={{ backgroundColor: 'yellow' , boxShadow: brilloYellow}}></div>
+			<div className="luz" onClick={cambiarBrilloVerde} style={{ backgroundColor: 'green' , boxShadow: brilloGreen}}></div>
 		</div>
-	);
+	</div>
+  );
 };
 
 export default Home;
